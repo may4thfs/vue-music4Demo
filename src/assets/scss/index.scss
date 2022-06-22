@@ -1,0 +1,15 @@
+@import "reset"; //重置CSS样式
+@import "icon"; //自定义图标/字体
+@import "base"; //基础的全局CSS样式
+
+/* 
+ 关于variable.scss和mixin.scss并不是实体的CSS样式(它是scss里的规则），在这里@import是没有意义的，要在Sass-loader全局配置。
+   *【非实体的CSS样式】：理解为给Sass提供的一些东西，CSS是不认识这些的
+ 那么，将这两个scss文件在vue.config全局引入，这样在各文件中写scss的时候可以直接使用，而不需要在使用的时候多写import导入。
+   * 因为这是需要Sass-loader编译，所以到vue.config中配置以告知loader需要全局引入。则当sass-loader编译对应文件时，不管是base.scss还是vue-loader内部解析到sass标签，它都能知道对应的sass变量/mixin函数是什么。
+*/
+
+/* 【sass的@import规则】
+ 除了CSS外，sass也有一个@import规则，但不同的是，sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求。
+ 使用sass的@import规则并不需要指明被导入文件的全名。
+*/
